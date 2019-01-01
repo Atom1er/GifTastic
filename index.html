@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Thomas-GIPHY</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="body" class="container-fluid">
+        <div class="container">
+            <div class="jumbotron">
+                <div class="row" id="welcom">
+                    <h2 class="display-4">Welcome To the word fastest GIF finder!!!</h2>
+                    <hr class="my-4">
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <p class="lead">Let's us know what you are looking for...</p>
+                        <div id="search">
+                            <input class="form-control mr-sm-2" id="UserInput" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" id="submitButton" type="submit">Search</button>
+                            <div id="error"></div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="UserButton"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
+<!-- <div class="footer"><p>TEST</p></div> -->
+
+    <script src="./assets/javascript/javascript.js"></script>
+</body>
+
+</html>

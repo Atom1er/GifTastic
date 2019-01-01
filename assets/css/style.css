@@ -1,0 +1,26 @@
+body{
+    /* background: url(); */
+    background-image: url(../images/background.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+#UserInput{
+    margin-bottom : 1%;
+    width: 80%;
+}
+#welcom{
+    display: block;
+    text-align: center;
+}
+
+.response{
+    border: 3px grey solid;
+    border-radius: 5px;
+    margin: 5px;
+}
+.response:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    border-color: brown;
+}
