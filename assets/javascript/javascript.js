@@ -8,7 +8,7 @@ var test;
 var animation;
 var active = false;
 // List of Button
-var list = ['cat', 'Ferrari 250GT', 'Herbie The Love Bug', 'Batmobile', 'Chrysler LeBaron Wagon', 'Dodge Charger', 'Alfa Romeo 33 Stradale'];
+var topics = ['toyota', 'Ferrari 250GT', 'Herbie The Love Bug', 'Batmobile', 'Chrysler LeBaron Wagon', 'Dodge Charger', 'Alfa Romeo 33 Stradale'];
 
 
 ButtonGenerator();
@@ -20,7 +20,7 @@ submitButton.on('click', function () {
     console.log("ON SUBMITBUTTON ");
     var input = UserInput.val();
     if (input !== "" && input !== test) {
-        list.push(input);
+        topics.push(input);
         UserButton.empty();
         ButtonGenerator();
         test = input;
@@ -35,10 +35,10 @@ submitButton.on('click', function () {
 function ButtonGenerator() {
     console.log("BUTTON GENERATOR");
     error.css('display', 'none');
-    for (var i = 0; i < list.length; i++) {
+    for (var i = 0; i < topics.length; i++) {
         var button = $('<button>');
-        button.text(list[i]);
-        button.attr('value', list[i]);
+        button.text(topics[i]);
+        button.attr('value', topics[i]);
         var essaie = button.val();
         console.log(essaie);
         button.attr('class', 'click btn btn-outline-success my-2 my-sm-0');
@@ -59,15 +59,32 @@ function clickEvent() {
         // console.log(queryURL);
         var qURL = $.get(queryURL);
         qURL.done(function (response) {
+            var table = $("<table>");
+            table.css('class', 'table');
             console.log(response);
-            for (var j=0 ; j<10 ; j++){
-                var img = $("<img>");
-                img.attr('src', response.data[j].images.fixed_height_still.url);
-                img.data('data-still', response.data[j].images.fixed_height_still.url);
-                img.data('data-animated', response.data[j].images.fixed_height.url);
-                img.data('data-state', "still");
-                img.attr('class', 'response');
-                result.prepend(img);
+            for (var j=0 ; j<10;){
+                var tr =$("<tr>");
+                for (var t = 0; t < 2; t++){
+                    var td = $("<td>");
+                    var img = $("<img>");
+                    var figcaption = $("<figcaption>");
+                    var fig;
+                    img.attr('src', response.data[j].images.fixed_height_still.url);
+                    img.data('data-still', response.data[j].images.fixed_height_still.url);
+                    img.data('data-animated', response.data[j].images.fixed_height.url);
+                    img.data('data-state', "still");
+                    img.attr('class', 'response img-fluid');
+                    fig = response.data[j].rating;
+                    figcaption.text("rating: "+fig);
+                    td.append(img, figcaption);
+                    tr.append(td);
+                    table.append(tr);
+                    // result.prepend(figcaption);
+                    result.prepend(table);
+                    j++;
+                }
+
+
             }
             
             animation();

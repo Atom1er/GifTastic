@@ -1,6 +1,7 @@
 body{
     /* background: url(); */
     background-image: url(../images/background.jpg);
+    width: 100%;
     background-repeat: repeat-y;
     background-size: cover;
 }
@@ -17,6 +18,7 @@ body{
 .response{
     border: 3px grey solid;
     border-radius: 5px;
+    display: -webkit-inline-box;
     margin: 5px;
 }
 .response:hover{
@@ -24,3 +26,19 @@ body{
     cursor: pointer;
     border-color: brown;
 }
+
+.foot{
+    border-bottom: 10px solid rgb(8, 8, 8);
+    position: relative;
+    margin-top: 10%;
+    margin-bottom: 0%;
+}
+
+#repository{
+    color: #186329;
+}
+
+.copyrights{
+   box-sizing: inherit; 
+}
+
