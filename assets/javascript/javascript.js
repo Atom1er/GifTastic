@@ -2,7 +2,8 @@
 var UserInput = $("#UserInput");
 var UserButton = $(".UserButton");
 var submitButton = $("#submitButton");
-var result = $("#result");
+var result = $("#result1");
+var result2 = $("#result2");
 var error = $("#error");
 var test;
 var animation;
@@ -53,9 +54,10 @@ function clickEvent() {
     $(".click").on('click', function () {
         console.log("ON CLICK EVENT FUNCTION");
         result.empty();
+        result2.empty();
         var chosen = $(this).attr('value');
         // console.log(chosen);
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + chosen + "&api_key=jTOJZ7sLc7MuRO7bchfas0KBgAIXTRxr&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + chosen + "&api_key=jTOJZ7sLc7MuRO7bchfas0KBgAIXTRxr&limit=20";
         // console.log(queryURL);
         var qURL = $.get(queryURL);
         qURL.done(function (response) {
@@ -86,11 +88,35 @@ function clickEvent() {
 
 
             }
-            
             animation();
+            $("#more").on('click', function(){
+                result2.empty();
+                for (var j=0 ; j<10;){
+                    var tr =$("<tr>");
+                    for (var t = 0; t < 2; t++){
+                        var td = $("<td>");
+                        var img = $("<img>");
+                        var figcaption = $("<figcaption>");
+                        var fig;
+                        var n = j+10;
+                        img.attr('src', response.data[n].images.fixed_height_still.url);
+                        img.data('data-still', response.data[n].images.fixed_height_still.url);
+                        img.data('data-animated', response.data[n].images.fixed_height.url);
+                        img.data('data-state', "still");
+                        img.attr('class', 'response img-fluid');
+                        fig = response.data[n].rating;
+                        figcaption.text("rating: "+fig);
+                        td.append(img, figcaption);
+                        tr.append(td);
+                        table.append(tr);
+                        result2.prepend(table);
+                        j++;
+                    }
+                }
+                animation();
+                $("#more").css('display','none');
+            });
         });
-        
-        
         // Working
         //var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +chosen+ "&api_key=jTOJZ7sLc7MuRO7bchfas0KBgAIXTRxr&limit=5";
         // $.ajax({
@@ -104,6 +130,7 @@ function clickEvent() {
 }
 
 function animation(){
+    $("#ShowMore").css('display','block');
     $(".response").on('click', function(){
         var state = $(this).data('data-state');
         console.log(state);
