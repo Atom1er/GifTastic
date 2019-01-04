@@ -1,5 +1,4 @@
 body{
-    /* background: url(); */
     background-image: url(../images/background.jpg);
     width: 100%;
     background-repeat: repeat-y;
@@ -31,8 +30,8 @@ body{
     background-image: linear-gradient(to bottom, rgba(255,0,0,0), #21dc4c);
     border-bottom: 10px solid rgb(8, 8, 8);
     position: relative;
-    margin-top: 90%;
-    margin-bottom: 0%;
+    width: 100%;
+    bottom: 0px;
 }
 
 #repository{
@@ -43,3 +42,21 @@ body{
    box-sizing: inherit; 
 }
 
+
+#more:hover{
+        background: #186329;
+    cursor: pointer;
+}
+
+#more{
+    padding-left: 5px;
+    background-color: #32bb52;
+    width: 120px;
+    border-radius: 10px;
+}
+
+#BackToTop{
+    margin-bottom: 15px;
+    position: relative;
+    float: right;
+}
